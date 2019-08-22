@@ -6,10 +6,6 @@ load("TTR_Data")
 Price = TTR_Data[,DJIA]
 Rfrate = log(1+TTR_Data[,RF]/360)
 
-load("TTR_Data2")
-Price = TTR_Data2[,DJIA]
-Rfrate = log(1+TTR_Data2[,RF]/360)
-
 # Filter rules
 initiate_x = c(0.005,0.01,0.02,0.03,0.04,0.05,0.1)
 liquidate_y = c(0.005,0.01,0.02,0.03,0.04,0.05)
