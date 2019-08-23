@@ -45,7 +45,7 @@ registerDoSNOW(cl)
 clusterEvalQ(cl, library(data.table))
 pb <- txtProgressBar(max=B, style=3)
 opts <- list(progress=function(n) setTxtProgressBar(pb, n))
-ffps_star_ew_l<-foreach(boot_i=1:B,.combine=cbind,
+FFPS_STAR<-foreach(boot_i=1:B,.combine=cbind,
                    .options.snow=opts) %dopar% {
   # Fama-French 3+Momentum+illiquidity alphas  
   boot_ew_l = ew_l_mfx[ran_idx2[,boot_i] , ]  
@@ -63,7 +63,7 @@ close(pb)
 stopCluster(cl)
 
 
-MT_mf_Result = FDPControl(ffps_hat_ew_l,ffps_star_ew_l,0.05,0.05)
+MT_mf_Result = FDPControl(ffps_hat_ew_l,FFPS_STAR,0.05,0.05)
 
 
 
